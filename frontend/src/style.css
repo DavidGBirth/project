@@ -1,0 +1,13 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container, form {
+	display: flex;
+	flex-direction: column;
+}
+
+button {
+	width: 60px;
+}
