@@ -7,18 +7,18 @@ const app = express();
 const port = 80;
 const fs = require('fs');
 const path = require('path');
-const bodyParser = require('body-parser');
-//const fetch = require('node-fetch');
+/*const bodyParser = require('body-parser');
+const fetch = require('node-fetch');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json());*/
 
 
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
-});
+});*/
 
 app.use(express.static('src'));
 

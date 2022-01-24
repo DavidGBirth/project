@@ -7,6 +7,11 @@ const port = 8080;
 const birthday = require('./components/birthdays');
 const sector = require('./components/sectorEmployees');
 const branch = require('./components/branches');
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 //const cors = require('cors');
 
 //app.use(cors());
@@ -19,7 +24,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get("/")
+app.get("/", (req, res) => {
+	res.send("Hello World!");
+});
 
 app.post("/adduser", (req, res) => {
 	const employee = req.body;

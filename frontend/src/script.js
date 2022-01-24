@@ -23,3 +23,7 @@ function register() {
 		obj.value = "";
 	});
 }
+
+function temptative() {
+	
+}
