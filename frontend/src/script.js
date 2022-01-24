@@ -8,7 +8,6 @@ function register() {
 	employee.birthdate = document.getElementById("birthdate").value;
 	//let wrapper = [];
 	//wrapper.push(employee);
-	console.log(employee);
 	request = {
 		method: 'POST',
 		body: JSON.stringify(employee),
