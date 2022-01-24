@@ -6,8 +6,19 @@ function register() {
 	employee.email = document.getElementById("email").value;
 	employee.sector = document.getElementById("sector").value;
 	employee.birthdate = document.getElementById("birthdate").value;
+	//let wrapper = [];
+	//wrapper.push(employee);
 	console.log(employee);
-	/*fetch()
-	.then()
-	.then()*/
+	request = {
+		body: JSON.stringify(employee),
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
+	fetch("/adduser", request)
+	.then(resposta => resposta.json())
+	.then(answer => {
+		console.log(answer);
+	});
 }
