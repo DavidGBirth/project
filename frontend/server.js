@@ -19,10 +19,8 @@ app.get("/", (req, res) => {
 
 app.post("/adduser", (req, res) => {
 	const employee = req.body;
-	console.log(employee.name)
 	fs.readFile('../backend/employees.json', (err, data) => {
 		const list = JSON.parse(data);
-		console.log(list[0]);
 		list.push(employee);
 
 		fs.writeFile('../backend/employees.json', JSON.stringify(list, null, 2), (err, result) => {
@@ -32,4 +30,4 @@ app.post("/adduser", (req, res) => {
 	return false;
 });
 
-app.listen(port);
+app.listen(port, () => console.log(`Server listening on port: ${port}`));
