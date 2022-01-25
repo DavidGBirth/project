@@ -34,8 +34,13 @@ const employees = require('./employees.json');
     next();
 });*/
 
+app.get("/", (req, res) => {
+	res.send("Hello World!");
+});
+
 app.post("/adduser", (req, res) => {
 	const employee = req.body;
+	console.log("Entrou na rota /adduser");
 	fs.readFile('./employees.json', (err, data) => {
 		const list = JSON.parse(data);
 		employee.registerNumber = list[list.length - 1].registerNumber + 1;
@@ -50,7 +55,7 @@ app.post("/adduser", (req, res) => {
 });
 
 app.get("/birthday", (req, res) => {
-	const month = req.query.month;
+	const month = parseInt(req.query.month);
 	let answer = birthday.getBirthdays(month, employees);
 	res.send(answer);
 });

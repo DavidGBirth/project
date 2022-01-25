@@ -1,4 +1,4 @@
-const url = "207.246.83.183"
+const url = "207.246.83.183";
 
 function register() {
 	const employee = {};
@@ -8,6 +8,7 @@ function register() {
 	employee.email = document.getElementById("email").value;
 	employee.sector = document.getElementById("sector").value;
 	employee.birthdate = document.getElementById("birthdate").value;
+	console.log(employee);
 	let options = {
 		method: 'POST',
 		body: JSON.stringify(employee),
@@ -28,18 +29,9 @@ function register() {
 }
 
 function birthdays() {
-	const month = parseInt(document.getElementById("month").value);
-	fetch(`http://${url}:3000/birthday?month=${month}`)
-	.then(response => response.json())
-	.then(employees => {
-		console.log(employees.length);
-		console.log(employees[0]);
-		console.log(employees[1]);
-		//printBirthdays(employees);
-	});
-
 	function printBirthdays(list) {
 		let div = document.createElement("div");
+		div.className = "result";
 		let h2 = document.createElement("h2");
 		h2.innerHTML = "Lista de Aniversariantes de";
 		div.append(h2);
@@ -50,5 +42,19 @@ function birthdays() {
 			ul.append(li);
 		});
 		div.append(ul);
+		return div;
 	}
+
+	const month = parseInt(document.getElementById("month").value);
+	fetch(`http://${url}:3000/birthday?month=${month}`)
+	.then(response => response.json())
+	.then(employees => {
+		let x = document.querySelector(".result");
+		if (x) {
+			x.remove();
+		}
+		let result = printBirthdays(employees);
+		let body = document.querySelector("body");
+		body.append(result);
+	});
 }
