@@ -3,7 +3,7 @@ console.log("app.js inicializado");
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const port = 8080;
+const port = 3000;
 const birthday = require('./components/birthdays');
 const sector = require('./components/sectorEmployees');
 const branch = require('./components/branches');
@@ -16,21 +16,27 @@ app.use(bodyParser.json());
 
 //app.use(cors());
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE" // what matters here is that OPTIONS is present
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization", "Access-Control-Allow-Origin");
+  next();
+});
+
 const employees = require('./employees.json');
 
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
-});
-
-app.get("/", (req, res) => {
-	res.send("Hello World!");
-});
+});*/
 
 app.post("/adduser", (req, res) => {
 	const employee = req.body;
-	fs.readFile('../backend/employees.json', (err, data) => {
+	fs.readFile('./employees.json', (err, data) => {
 		const list = JSON.parse(data);
 		employee.registerNumber = list[list.length - 1].registerNumber + 1;
 		list.push(employee);
@@ -39,7 +45,7 @@ app.post("/adduser", (req, res) => {
 			console.log(err);
 		});
 	});
-	console.log("Usuário adicionando [Back]");
+	res.json(1);
 	return false;
 });
 
@@ -61,4 +67,4 @@ app.get("/branches", (req, res) => {
 	res.send(answer);
 });
 
-app.listen(port);
+app.listen(port, () => console.log(`Server listening on port: ${port}`));

@@ -6,24 +6,21 @@ function register() {
 	employee.email = document.getElementById("email").value;
 	employee.sector = document.getElementById("sector").value;
 	employee.birthdate = document.getElementById("birthdate").value;
-	//let wrapper = [];
-	//wrapper.push(employee);
-	let request = {
+	let options = {
 		method: 'POST',
-		mode: 'cors',
 		body: JSON.stringify(employee),
+		cache: 'no-cache',
+    	credentials: 'same-origin',
 		headers: {
-			'Content-Type': 'application/json',
+			'Content-Type': 'application/json'
 		}
-	}
-	fetch("http://localhost:8080/adduser", request)
-	.then(console.log("O usuário foi adicionado"));
+	};
+	fetch("http://45.77.98.246:3000/adduser", options)
+	.then(res => res.json())
+  	.then(response => console.log('Success: ', response))
+  	.catch(error => console.error('Error: ', error));
 	const inputs = document.querySelectorAll("input");
 	inputs.forEach((obj) => {
 		obj.value = "";
 	});
-}
-
-function temptative() {
-	
 }
