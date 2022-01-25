@@ -8,11 +8,14 @@ const branches = function getBranches(list) {
     	}
     	return 0;
     });
-    onlyBranches = list.map((employee) => {
+    console.log(list);
+    let onlyBranches = list.map((employee) => {
     	let object = {};
-    	obj[employee.name] = employee.branch;
+    	object.name = employee.name;
+        object.branch = employee.branch;
     	return object;
     });
+    console.log(onlyBranches);
     return onlyBranches;
 };
 

@@ -80,7 +80,7 @@ app.get("/sector", (req, res) => {
 
 app.get("/branches", (req, res) => {
 	let answer = branch.getBranches([...employees]);
-	res.send(answer);
+	res.json(answer);
 });
 
 app.listen(port, () => console.log(`Server listening on port: ${port}`));
