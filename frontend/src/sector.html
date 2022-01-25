@@ -14,6 +14,23 @@
 				margin: 10px;
 			}
 		</style>
+		<script type="text/javascript">
+			fetch("http://207.246.83.183:3000/getsectors")
+			.then(res => res.json())
+		  	.then(sectors => {
+		  		sectors.sort(function(a, b){
+				    if(a < b) { return -1; }
+				    if(a > b) { return 1; }
+				    return 0;
+				});
+				options = sectors.map(function (obj) {
+					return `<option value="${obj}">${obj}</option>`
+				});
+				let x = document.getElementById("sectors");
+				x.innerHTML = options;
+		  	});
+		</script>
+		<script type="text/javascript" src="script.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -21,7 +38,7 @@
 			<select id="sectors">
 				
 			</select>
-			<button type="button">Pesquisar</button>
+			<button type="button" onclick="sectors()">Pesquisar</button>
 		</div>
 	</body>
 </html>

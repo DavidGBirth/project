@@ -60,11 +60,22 @@ app.get("/birthday", (req, res) => {
 	res.send(answer);
 });
 
+app.get("/getsectors", (req, res) => {
+	let list = [];
+	employees.forEach((obj) => {
+		let sector = obj.sector;
+		if (!list.includes(sector)) {
+			list.push(sector);
+		}
+	});
+	res.json(list);
+});
+
 app.get("/sector", (req, res) => {
 	let employeeSector = req.query.sector;
 	employeeSector = employeeSector.toLowerCase();
 	let answer = sector.getSectorEmployees(employeeSector, employees);
-	res.send(answer);
+	res.json(answer);
 });
 
 app.get("/branches", (req, res) => {

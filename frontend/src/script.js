@@ -58,3 +58,35 @@ function birthdays() {
 		body.append(result);
 	});
 }
+
+function sectors() {
+	function printSectors(list) {
+		let div = document.createElement("div");
+		div.className = "result";
+		let h2 = document.createElement("h2");
+		h2.innerHTML = `Lista de Funcionários do Setor de ${value}`;
+		div.append(h2);
+		let ul = document.createElement("ul");
+		list.forEach((obj) => {
+			let li = document.createElement("li");
+			li.textContent = obj.name;
+			ul.append(li);
+		});
+		div.append(ul);
+		return div;
+	}
+
+	let select = document.getElementById("sectors");
+	let value = select.options[select.selectedIndex].text;
+	fetch(`http://${url}:3000/sector?sector=${value}`)
+	.then(response => response.json())
+	.then(employees => {
+		let x = document.querySelector(".result");
+		if (x) {
+			x.remove();
+		}
+		let result = printSectors(employees);
+		let body = document.querySelector("body");
+		body.append(result);
+	});
+}
