@@ -1,3 +1,5 @@
+const url = "207.246.83.183"
+
 function register() {
 	const employee = {};
 	employee.registerNumber = 0;
@@ -15,7 +17,7 @@ function register() {
 			'Content-Type': 'application/json'
 		}
 	};
-	fetch("http://45.77.98.246:3000/adduser", options)
+	fetch(`http://${url}:3000/adduser`, options)
 	.then(res => res.json())
   	.then(response => console.log('Success: ', response))
   	.catch(error => console.error('Error: ', error));
@@ -27,7 +29,7 @@ function register() {
 
 function birthdays() {
 	const month = parseInt(document.getElementById("month").value);
-	fetch(`http://207.246.83.183:3000/birthday?month=${month}`)
+	fetch(`http://${url}:3000/birthday?month=${month}`)
 	.then(response => response.json())
 	.then(employees => {
 		console.log(employees.length);
