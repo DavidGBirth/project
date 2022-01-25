@@ -3,11 +3,31 @@
 	padding: 0;
 }
 
-.container, form {
+body {
 	display: flex;
-	flex-direction: column;
 }
 
-button {
-	width: 60px;
+aside {
+	width: 30%;
+	background: #E11584;
+	border-right: 3px solid black;
+	float: left;
+	display: flex;
+	flex-direction: column;
+	color: #FFFFFF;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	font-weight: 600;
+}
+
+aside a {
+	font-style: none;
+	color: initial;
+}
+
+iframe {
+	border: none;
+	width: 70%;
+	height: 500px;
 }

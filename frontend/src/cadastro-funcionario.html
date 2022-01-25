@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.container, form {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				margin: 10px;
+			}
+
+			button {
+				width: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form>
+				<div>
+					<label>Nome: </label>
+					<input type="text" name="name" id="name" />
+				</div>
+				<div>
+					<label>Ramal: </label>
+					<input type="text" name="branch" id="branch" />
+				</div>
+				<div>
+					<label>Email: </label>
+					<input type="email" name="email" id="email" />
+				</div>
+				<div>
+					<label>Setor: </label>
+					<input type="text" name="sector" id="sector" />
+				</div>
+				<div>
+					<label>Data de Nascimento: </label>
+					<input type="date" name="birthdate" id="birthdate" />
+				</div>
+				<button type="button" onclick="register()">Cadastrar</button>
+			</form>
+		</div>
+	</body>
+</html>
