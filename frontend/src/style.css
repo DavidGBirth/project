@@ -9,21 +9,29 @@ body {
 
 aside {
 	width: 30%;
-	background: #E11584;
+	background: #FF0080;
 	border-right: 3px solid black;
 	float: left;
 	display: flex;
 	flex-direction: column;
 	color: #FFFFFF;
-	justify-content: center;
 	align-items: center;
-	gap: 10px;
+
+	gap: 25px;
 	font-weight: 600;
 }
 
+aside div:first-child {
+	padding-top: 50px;
+}
+
+aside div {
+	border-bottom: 1px solid white;
+}
+
 aside a {
-	font-style: none;
-	color: initial;
+	text-decoration: none;
+	color: #FFFFFF;
 }
 
 iframe {

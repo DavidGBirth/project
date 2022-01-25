@@ -24,3 +24,29 @@ function register() {
 		obj.value = "";
 	});
 }
+
+function birthdays() {
+	const month = parseInt(document.getElementById("month").value);
+	fetch(`http://207.246.83.183:3000/birthday?month=${month}`)
+	.then(response => response.json())
+	.then(employees => {
+		console.log(employees.length);
+		console.log(employees[0]);
+		console.log(employees[1]);
+		//printBirthdays(employees);
+	});
+
+	function printBirthdays(list) {
+		let div = document.createElement("div");
+		let h2 = document.createElement("h2");
+		h2.innerHTML = "Lista de Aniversariantes de";
+		div.append(h2);
+		let ul = document.createElement("ul");
+		list.forEach((obj) => {
+			let li = document.createElement("li");
+			li.textContent = obj.name;
+			ul.append(li);
+		});
+		div.append(ul);
+	}
+}

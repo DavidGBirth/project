@@ -51,7 +51,7 @@ app.post("/adduser", (req, res) => {
 
 app.get("/birthday", (req, res) => {
 	const month = req.query.month;
-	let answer = birthday.getBirtdays(month, employees);
+	let answer = birthday.getBirthdays(month, employees);
 	res.send(answer);
 });
 
