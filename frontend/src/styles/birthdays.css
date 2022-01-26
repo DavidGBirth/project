@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	margin: 15px;
+	font-family: Courier Prime, sans-serif;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 15px;
+	font-family: Lato, sans-serif;
+}
+
+.container input {
+	margin-top: 5px;
+	width: 100px;
+}
+
+button {
+	width: 100px;
+	height: 20px;
+	border: none;
+	margin-top: 15px;
+	font-size: 16px;
+	font-weight: 700;
+	background: #028A0F;
+	color: #FFFFFF;
+	font-family: Courier Prime, sans-serif;
+	margin-bottom: 10px
+}
+
+.result {
+	margin-left: 15px;
+}
+
+.result h2 {
+	font-family: Courier Prime, sans-serif;
+	margin-bottom: 10px
+}
+
+.result ul {
+	font-family: Courier Prime, sans-serif;
+	list-style: none;
+}

@@ -7,26 +7,20 @@
 }
 
 h1 {
-	margin: 15px;
 	font-family: Courier Prime, sans-serif;
+	margin: 20px;
 }
 
 .container {
 	display: flex;
 	gap: 5px;
-	margin: 15px;
+	margin: 20px;
 	font-family: Lato, sans-serif;
 }
 
-button {
-	width: 100px;
-	height: 20px;
-	border: none;
-	margin-top: 15px;
-	font-size: 16px;
-	font-weight: 700;
-	background: #028A0F;
-	color: #FFFFFF;
-	font-family: Courier Prime, sans-serif;
-	margin-bottom: 10px
+.tableContent, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 700px;
+	text-align: center;
 }

@@ -1,4 +1,4 @@
-const url = "207.246.83.183";
+const url = "140.82.6.52";
 
 function register() {
 	const employee = {};
@@ -29,11 +29,27 @@ function register() {
 }
 
 function birthdays() {
+	const calendar = {
+		"1": "Janeiro",
+		"2": "Fevereiro",
+		"3": "Março",
+		"4": "Abril",
+		"5": "Maio",
+		"6": "Junho",
+		"7": "Julho",
+		"8": "Agosto",
+		"9": "Setembro",
+		"10": "Outubro",
+		"11": "Novembro",
+		"12": "Dezembro"
+	}
+	const month = parseInt(document.getElementById("month").value);
+
 	function printBirthdays(list) {
 		let div = document.createElement("div");
 		div.className = "result";
 		let h2 = document.createElement("h2");
-		h2.innerHTML = "Lista de Aniversariantes de";
+		h2.innerHTML = `Lista de Aniversariantes de ${calendar[month.toString()]}`;
 		div.append(h2);
 		let ul = document.createElement("ul");
 		list.forEach((obj) => {
@@ -45,7 +61,6 @@ function birthdays() {
 		return div;
 	}
 
-	const month = parseInt(document.getElementById("month").value);
 	fetch(`http://${url}:3000/birthday?month=${month}`)
 	.then(response => response.json())
 	.then(employees => {
@@ -106,4 +121,26 @@ function sectors() {
 		let body = document.querySelector("body");
 		body.append(result);
 	});
+}
+
+function fillBranches() {
+	fetch(`http://${url}:3000/branches`)
+	.then(res => res.json())
+	.then(branches => {
+		branches.sort(function(a, b){
+			if(a.name < b.name) { return -1; }
+			if(a.name > b.name) { return 1; }
+			return 0;
+		});
+		let x = document.querySelector("thead");
+		let header = "<tr><th>#</th><th>Nome</th><th>Ramal</th></tr>";
+		x.innerHTML = header;
+		let y = document.querySelector("tbody");
+		let rows = branches.map((obj, index) => {
+			return `<tr><td>${index + 1}</td><td>${obj.name}</td><td>${obj.branch}</td></tr>`;
+		});
+		y.innerHTML = rows.join("");
+	});
+	let table = document.querySelector("table");
+	table.className = "tableContent";
 }

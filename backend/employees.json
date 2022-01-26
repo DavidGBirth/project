@@ -238,5 +238,13 @@
     "email": "gtejadat@yellowbook.com",
     "sector": "Product Management",
     "birthdate": "1977-03-24"
+  },
+  {
+    "registerNumber": 31,
+    "name": "David Gomes",
+    "branch": 123,
+    "email": "david@gmail.com",
+    "sector": "IT",
+    "birthdate": "1997-10-10"
   }
 ]
