@@ -59,6 +59,23 @@ function birthdays() {
 	});
 }
 
+function fillSelect() {
+	fetch(`http://${url}:3000/getsectors`)
+	.then(res => res.json())
+	.then(sectors => {
+		sectors.sort(function(a, b){
+	    if(a < b) { return -1; }
+	    if(a > b) { return 1; }
+	    return 0;
+	});
+	options = sectors.map(function (obj) {
+		return `<option value="${obj}">${obj}</option>`
+	});
+	let x = document.getElementById("sectors");
+	x.innerHTML = options;
+	});
+}
+
 function sectors() {
 	function printSectors(list) {
 		let div = document.createElement("div");
