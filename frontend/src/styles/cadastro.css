@@ -34,3 +34,7 @@ button {
 	color: #FFFFFF;
 	font-family: Courier Prime, sans-serif;
 }
+
+p {
+	margin: 20px 15px;
+}

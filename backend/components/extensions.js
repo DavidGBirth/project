@@ -1,4 +1,4 @@
-const branches = function getBranches(list) {
+const extensions = function getExtensions(list) {
 	list.sort(function (a, b) {
     	if(a.name < b.name) {
     		return -1;
@@ -9,14 +9,14 @@ const branches = function getBranches(list) {
     	return 0;
     });
     console.log(list);
-    let onlyBranches = list.map((employee) => {
+    let onlyExtensions = list.map((employee) => {
     	let object = {};
     	object.name = employee.name;
-        object.branch = employee.branch;
+        object.extension = employee.extension;
     	return object;
     });
-    console.log(onlyBranches);
-    return onlyBranches;
+    console.log(onlyExtensions);
+    return onlyExtensions;
 };
 
-module.exports = { getBranches: branches };
+module.exports = { getExtensions: extensions };

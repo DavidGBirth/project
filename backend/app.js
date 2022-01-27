@@ -6,33 +6,26 @@ const fs = require('fs');
 const port = 3000;
 const birthday = require('./components/birthdays');
 const sector = require('./components/sectorEmployees');
-const branch = require('./components/branches');
+const extension = require('./components/extensions');
 
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//const cors = require('cors');
 
-//app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "OPTIONS, GET, POST, PUT, PATCH, DELETE" // what matters here is that OPTIONS is present
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization", "Access-Control-Allow-Origin");
   next();
 });
 
-const employees = require('./employees.json');
+const employees = require('./database.json');
 
-/*app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
-});*/
 
 app.get("/", (req, res) => {
 	res.send("Hello World!");
@@ -40,13 +33,12 @@ app.get("/", (req, res) => {
 
 app.post("/adduser", (req, res) => {
 	const employee = req.body;
-	console.log("Entrou na rota /adduser");
-	fs.readFile('./employees.json', (err, data) => {
+	fs.readFile('./database.json', (err, data) => {
 		const list = JSON.parse(data);
-		employee.registerNumber = list[list.length - 1].registerNumber + 1;
+		employee.id = list[list.length - 1].id + 1;
 		list.push(employee);
 
-		fs.writeFile('./employees.json', JSON.stringify(list, null, 2), (err, result) => {
+		fs.writeFile('./database.json', JSON.stringify(list, null, 2), (err, result) => {
 			console.log(err);
 		});
 	});
@@ -78,8 +70,8 @@ app.get("/sector", (req, res) => {
 	res.json(answer);
 });
 
-app.get("/branches", (req, res) => {
-	let answer = branch.getBranches([...employees]);
+app.get("/extensions", (req, res) => {
+	let answer = extension.getExtensions([...employees]);
 	res.json(answer);
 });
 
