@@ -6,8 +6,8 @@ const port = 80;
 const fs = require('fs');
 const path = require('path');
 
-
-app.use(express.static('src'));
+app.use(express.static('src/calculadora'));
+app.use(express.static('src/funcionarios'));
 
 
 app.get("/", (req, res) => {

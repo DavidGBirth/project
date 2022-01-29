@@ -2,7 +2,7 @@ function calc() {
 	return {
 		operand1: 0,
 	    operand2: 0,
-	    operator: "",
+	    operation: "",
 		setOperand1(__operand1) {
 			operand1 = __operand1;
 		},
@@ -54,7 +54,7 @@ numbers.forEach((number) => {
 			calculator.setOperand2(value2);
 			visor.innerHTML = calculator.getResult();
 			calculator.clearCalculator();
-		} else if (calculation.operation == null && !first) {
+		} else if (calculator.operation == null && !first) {
 			first = true;
 			visor.innerHTML = digit;
 		} else if (digit != "equal") {
