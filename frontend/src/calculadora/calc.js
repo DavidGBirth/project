@@ -7,12 +7,24 @@ function calc() {
 			operand1 = __operand1;
 		},
 
+		getOperand1() {
+			return operand1;
+		},
+
 		setOperand2(__operand2) {
 			operand2 = __operand2;
 		},
 
+		getOperand2() {
+			return operand2;
+		},
+
 		setOperation(__operation) {
 			operation = __operation;
+		},
+
+		getOperation() {
+			return operation;
 		},
 
 		getResult() {
@@ -53,7 +65,11 @@ numbers.forEach((number) => {
 		if (digit === "equal" && !first) {
 			let value2 = parseInt(visor.innerHTML);
 			calculator.setOperand2(value2);
-			visor.innerHTML = calculator.getResult();
+			fetch(`http://45.76.15.116:3000/operation?op1=${calculator.getOperand1()}&op2=${calculator.getOperand2()}&operator=${calculator.getOperation()}`)
+			.then(resposta => resposta.text())
+			.then(response => {
+				visor.innerHTML = response;
+			});
 			calculator.clearCalculator();
 			first = true;
 			new_op = true;
@@ -73,6 +89,7 @@ ops.forEach((op) => {
 			let value1 = parseInt(visor.innerHTML);
 			calculator.setOperand1(value1);
 			calculator.setOperation(op.value);
+			//console.log(calculator.getOperand1());
 			visor.innerHTML = "";
 			first = false;
 		}
