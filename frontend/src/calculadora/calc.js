@@ -45,6 +45,7 @@ let ops = document.querySelectorAll(".symbols button");
 let visor = document.querySelector(".visor span");
 let calculator = calc();
 let first = true
+let new_op = false;
 
 numbers.forEach((number) => {
 	number.addEventListener('click', function () {
@@ -54,9 +55,12 @@ numbers.forEach((number) => {
 			calculator.setOperand2(value2);
 			visor.innerHTML = calculator.getResult();
 			calculator.clearCalculator();
-		} else if (calculator.operation == null && !first) {
 			first = true;
+			new_op = true;
+		} else if (new_op) {
+			console.log("Entrou");
 			visor.innerHTML = digit;
+			new_op = false;
 		} else if (digit != "equal") {
 			visor.innerHTML += digit;
 		}
