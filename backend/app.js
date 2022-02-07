@@ -75,4 +75,27 @@ app.get("/extensions", (req, res) => {
 	res.json(answer);
 });
 
+app.get("/operation", (req, res) => {
+	let op1 = parseInt(req.query.op1);
+	let op2 = parseInt(req.query.op2);
+	let operation = req.query.operation;
+	let answer = 0;
+	switch (operation) {
+		case 'sum':
+			answer = op1 + op2;
+			break;
+		case 'subtraction':
+			answer = op1 - op2;
+			break;
+		case 'multiplication':
+			answer = op1 * op2;
+			break;
+		case 'division':
+			answer = op1 / op2;
+			break;
+	}
+	console.log(answer);
+	res.json(answer);
+});
+
 app.listen(port, () => console.log(`Server listening on port: ${port}`));
