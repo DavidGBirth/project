@@ -40,8 +40,37 @@ function calc() {
 	};
 }
 
-let x = calc();
-x.setOperand1(1);
-x.setOperand2(10);
-x.setOperation("sum");
-console.log(x.getResult());
+let numbers = document.querySelectorAll(".numbers button");
+let ops = document.querySelectorAll(".symbols button");
+let visor = document.querySelector(".visor span");
+let calculator = calc();
+let first = true
+
+numbers.forEach((number) => {
+	number.addEventListener('click', function () {
+		let digit = number.value;
+		if (digit === "equal" && !first) {
+			let value2 = parseInt(visor.innerHTML);
+			calculator.setOperand2(value2);
+			visor.innerHTML = calculator.getResult();
+			calculator.clearCalculator();
+		} else if (calculator.operation == null && !first) {
+			first = true;
+			visor.innerHTML = digit;
+		} else if (digit != "equal") {
+			visor.innerHTML += digit;
+		}
+	});
+});
+
+ops.forEach((op) => {
+	op.addEventListener('click', function () {
+		if (visor.innerHTML && first) {
+			let value1 = parseInt(visor.innerHTML);
+			calculator.setOperand1(value1);
+			calculator.setOperation(op.value);
+			visor.innerHTML = "";
+			first = false;
+		}
+	});
+});
