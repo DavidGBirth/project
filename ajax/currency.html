@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .values {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .perdate {
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <label for="">Escolha uma moeda: </label>
+        <select name="currencies" id="currencies"></select>
+        <div class="perdate">
+            <div>
+                <label for="">Data Inicial: </label>
+                <input type="date" id="data" />
+            </div>
+            <!-- <div>
+                <label for="">Data Final: </label>
+                <input type="date" />
+            </div> -->
+        </div>
+        <button>Buscar</button>
+        <div class="values"></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="ajax.js"></script>
+    </body>
+</html>

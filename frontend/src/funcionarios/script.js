@@ -1,4 +1,4 @@
-const url = "108.61.155.215";
+const url = "localhost";
 
 function resizeIFrameToFitContent() {
 	const iframe = document.getElementById("principal");
@@ -35,7 +35,7 @@ function register() {
 			'Content-Type': 'application/json'
 		}
 	};
-	fetch(`http://${url}:3000/adduser`, options)
+	fetch(`http://${url}:8080/adduser`, options)
 	.then(res => res.json())
   	.then(response => console.log('Success: ', response))
   	.catch(error => console.error('Error: ', error));
@@ -80,7 +80,7 @@ function birthdays() {
 		return div;
 	}
 
-	fetch(`http://${url}:3000/birthday?month=${month}`)
+	fetch(`http://${url}:8080/birthday?month=${month}`)
 	.then(response => response.json())
 	.then(employees => {
 		let x = document.querySelector(".result");
@@ -94,7 +94,7 @@ function birthdays() {
 }
 
 function fillSelect() {
-	fetch(`http://${url}:3000/getsectors`)
+	fetch(`http://${url}:8080/getsectors`)
 	.then(res => res.json())
 	.then(sectors => {
 		sectors.sort(function(a, b){
@@ -129,7 +129,7 @@ function sectors() {
 
 	let select = document.getElementById("sectors");
 	let value = select.options[select.selectedIndex].text;
-	fetch(`http://${url}:3000/sector?sector=${value}`)
+	fetch(`http://${url}:8080/sector?sector=${value}`)
 	.then(response => response.json())
 	.then(employees => {
 		let x = document.querySelector(".result");
@@ -143,7 +143,7 @@ function sectors() {
 }
 
 function fillExtensions() {
-	fetch(`http://${url}:3000/extensions`)
+	fetch(`http://${url}:8080/extensions`)
 	.then(res => res.json())
 	.then(extensions => {
 		extensions.sort(function(a, b){

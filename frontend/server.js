@@ -2,12 +2,12 @@ console.log("server.js inicializado");
 
 const express = require('express');
 const app = express();
-const port = 80;
+const port = 3000;
 const fs = require('fs');
 const path = require('path');
 
-app.use(express.static('src/calculadora'));
-app.use(express.static('src/funcionarios'));
+app.use('/calculadora', express.static('src/calculadora'));
+app.use('/funcionarios', express.static('src/funcionarios'));
 
 
 app.get("/", (req, res) => {
