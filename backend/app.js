@@ -98,4 +98,19 @@ app.get("/operation", (req, res) => {
 	res.json(answer);
 });
 
+app.post("/games", (req, res) => {
+	const games = req.body;
+	fs.readFile('./database.json', (err, data) => {
+		const list = JSON.parse(data);
+		game.id = list[list.length - 1].id + 1;
+		list.push(employee);
+
+		fs.writeFile('./database.json', JSON.stringify(list, null, 2), (err, result) => {
+			console.log(err);
+		});
+	});
+	res.json(1);
+	return false;
+});
+
 app.listen(port, () => console.log(`Server listening on port: ${port}`));
